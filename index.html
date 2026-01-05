@@ -5,175 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>増殖の庭 Evolution Garden DX | 究極の戦略的進化シミュレーター</title>
     
-    <meta name="description" content="【無料・登録不要】4つの血統が覇権を争う、戦略的生物進化シミュレーター。独自のアルゴリズムによる生態系紛争、三要素の研鑽、第10階位への到達。あなたの采配が生命の歴史を塗り替える。">
-    <meta name="keywords" content="進化シミュレーター,ブラウザゲーム,無料ゲーム,戦略シミュレーション,放置ゲーム,増殖の庭,生態系,生物進化">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "増殖の庭 Evolution Garden DX",
-      "operatingSystem": "Web",
-      "applicationCategory": "GameApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "JPY"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "124"
-      }
-    }
-    </script>
-
+    <meta name="description" content="【無料・登録不要】4つの血統が覇権を争う、戦略的生物進化シミュレーター。独自のアルゴリズムによる生態系紛争。">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@900&family=Noto+Sans+JP:wght@300;500;800&display=swap" rel="stylesheet">
 
     <style>
         :root { --accent: #2dd4bf; --bg: #05070a; --card-bg: #0f172a; --text-main: #e2e8f0; --text-sub: #94a3b8; }
-        
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.8; overflow-x: hidden; }
+        body { margin: 0; font-family: 'Noto Sans JP', sans-serif; background: var(--bg); color: var(--text-main); line-height: 1.8; }
 
-        /* 背景：深淵なグラデーション */
-        .bg-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 50%, #111827 0%, #05070a 100%); opacity: 0.8; }
-
-        /* ヒーローセクション：文字が下がりすぎないよう中央配置を最適化 */
-        .hero {
-            min-height: 90vh; /* スマホで見てもボタンが隠れない高さ */
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; padding: 40px 20px;
-            position: relative;
-        }
-        .kicker { font-weight: 800; color: var(--accent); letter-spacing: 0.3em; margin-bottom: 15px; font-size: 0.9rem; text-transform: uppercase; }
-        .hero h1 { 
-            font-family: 'Noto Serif JP', serif; font-size: clamp(2.5rem, 9vw, 5.5rem); 
-            margin: 0 0 25px 0; line-height: 1.1; background: linear-gradient(to bottom, #fff 40%, var(--accent));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .hero p { font-size: 1.25rem; max-width: 750px; color: var(--text-sub); margin-bottom: 45px; }
-
-        .btn-play {
-            background: var(--accent); color: #000; padding: 22px 65px;
-            font-size: 1.5rem; font-weight: 900; border-radius: 4px;
-            text-decoration: none; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 0 30px rgba(45, 212, 191, 0.4);
-        }
-        .btn-play:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 50px rgba(45, 212, 191, 0.6); }
-
-        .scroll-down { margin-top: 50px; font-size: 0.8rem; color: var(--text-sub); opacity: 0.6; animation: bounce 2.5s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
-
-        /* セクション共通 */
-        section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 70px; }
-        .section-title h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: 15px; }
-        .section-title .divider { width: 60px; height: 3px; background: var(--accent); margin: 0 auto; }
-
-        /* 特徴カード */
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .feature-card { background: var(--card-bg); padding: 45px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; }
-        .feature-card:hover { border-color: var(--accent); transform: translateY(-5px); }
-        .feature-card h3 { font-size: 1.6rem; color: var(--accent); margin-top: 0; margin-bottom: 20px; }
+        /* --- 共通レイアウト --- */
+        section { padding: 80px 20px; max-width: 900px; margin: 0 auto; }
+        .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(2.5rem, 9vw, 5rem); color: var(--accent); margin: 0; }
         
-        /* 深度解説：SEO記事 */
-        .depth-section { background: rgba(15, 23, 42, 0.4); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .article-content { max-width: 850px; margin: 0 auto; font-size: 1.2rem; color: #cbd5e1; }
-        .article-content h3 { color: #fff; font-size: 2rem; margin-top: 70px; border-left: 6px solid var(--accent); padding-left: 20px; font-family: 'Noto Serif JP', serif; }
+        .btn-play { background: var(--accent); color: #000; padding: 20px 50px; font-size: 1.3rem; font-weight: 900; text-decoration: none; border-radius: 4px; display: inline-block; margin-top: 30px; }
 
-        /* ビジュアルスペース（画像イメージ） */
-        .visual-box { 
-            width: 100%; height: 350px; background: #000; border-radius: 12px; margin: 50px 0;
-            display: flex; align-items: center; justify-content: center;
-            border: 1px solid #1e293b; color: var(--text-sub); font-style: italic;
+        /* --- 1. 勢力分布ビジュアル (CSS実装) --- */
+        .chart-container {
+            background: #000; border: 1px solid #1e293b; padding: 30px; border-radius: 12px; margin: 40px 0;
+            display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: center;
         }
+        .mini-map {
+            width: 150px; height: 150px; display: grid; grid-template-columns: 1fr 1fr;
+            border-radius: 10px; overflow: hidden; transform: rotate(45deg); border: 2px solid #334155;
+        }
+        .m-z { transition: 2s; animation: pulse 4s infinite; }
+        .m-red { background: #ef4444; height: 60%; }
+        .m-blue { background: #3b82f6; height: 40%; }
+        .m-green { background: #22c55e; height: 70%; }
+        .m-yellow { background: #eab308; height: 30%; }
+        
+        .stats-labels { display: flex; flex-direction: column; gap: 10px; }
+        .label-row { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; }
+        .bar-bg { flex: 1; height: 8px; background: #1e293b; border-radius: 4px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 4px; }
 
-        footer { text-align: center; padding: 100px 20px; background: #05070a; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-cta { margin-bottom: 50px; }
+        @keyframes pulse { 0%, 100% { opacity: 0.8; } 50% { opacity: 0.4; } }
+
+        /* --- 2. 進化プロセスビジュアル (CSS実装) --- */
+        .evolution-flow {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(45, 212, 191, 0.05); padding: 40px 20px; border-radius: 12px; margin: 40px 0;
+            border-top: 1px solid rgba(45, 212, 191, 0.2);
+        }
+        .evo-step { text-align: center; flex: 1; position: relative; }
+        .evo-circle {
+            width: 60px; height: 60px; border: 2px solid var(--accent); border-radius: 50%;
+            margin: 0 auto 15px; display: flex; align-items: center; justify-content: center;
+            font-weight: 800; color: var(--accent); background: var(--bg);
+        }
+        .evo-step:not(:last-child)::after {
+            content: "→"; position: absolute; top: 30px; right: -15%; color: #334155; font-size: 1.5rem;
+        }
+        .step-name { font-size: 0.8rem; font-weight: bold; color: var(--text-sub); }
+
+        /* --- 共通テキスト装飾 --- */
+        .depth-section h3 { border-left: 4px solid var(--accent); padding-left: 15px; margin-top: 50px; font-family: 'Noto Serif JP', serif; }
+
+        footer { text-align: center; padding: 100px 20px; border-top: 1px solid #1e293b; }
     </style>
 </head>
 <body>
 
-    <div class="bg-particles"></div>
-
     <header class="hero">
-        <div class="kicker">Evolutionary Strategic Simulation</div>
+        <div style="color: var(--accent); letter-spacing: 0.2em; font-weight: 800; margin-bottom: 10px;">STRATEGIC EVOLUTION</div>
         <h1>増殖の庭<br>Evolution Garden DX</h1>
-        <p>
-            登録不要。ブラウザで即座に開始。<br>
-            四つの血統が織りなす、残酷で美しい「進化の実験場」。<br>
-            あなたは、生命の均衡を司る唯一の観測者となる。
-        </p>
-        <div class="cta-area">
-            <a href="game.html" class="btn-play">進化を観測する</a>
-        </div>
-        <div class="scroll-down">詳細を読み解く</div>
+        <p>四つの血統が覇権を奪い合う、戦略的生物進化シミュレーター。</p>
+        <a href="game.html" class="btn-play">進化を観測する</a>
     </header>
 
-    <section id="features">
-        <div class="section-title">
-            <h2>庭園を支配する三つの理</h2>
-            <div class="divider"></div>
-        </div>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>🧬 絶え間なき変容</h3>
-                <p>生命に静止はありません。筋力・演算・機動。三つのステータスが織りなす無限の分岐点。環境に適応した者だけが「第10階位」の扉を開きます。</p>
-            </div>
-            <div class="feature-card">
-                <h3>⚖️ 勢力図の力学</h3>
-                <p>一つの血統が強くなりすぎれば、マナは枯渇し、他勢力の逆襲が始まります。支配と均衡、その狭間を突くタクティカル・シミュレーション。</p>
-            </div>
-            <div class="feature-card">
-                <h3>📡 リアルタイム観測</h3>
-                <p>境界紛争はあなたの見ていない間も続きます。独自の領土アルゴリズムが、一秒ごとに異なる庭園の姿を描き出します。</p>
-            </div>
-        </div>
-    </section>
-
     <section class="depth-section">
-        <div class="article-content">
-            <h2>なぜ、人々はこの庭園に惹き込まれるのか</h2>
-            <p>
-                『増殖の庭 Evolution Garden DX』は、単なる放置ゲームではありません。それはデジタルな生態系のミニチュアであり、観測者の知的好奇心を刺激する壮大な実験です。
-                多くのシミュレーションゲームが単調な数値の増減に終始する中、本作は「版図（テリトリー）」と「進化系統」の相関に極限までこだわりました。
-            </p>
+        <h2>なぜ、この庭園は止まらないのか</h2>
+        <p>『増殖の庭』の核心は、絶えず変化し続ける生態系バランスにあります。静止することのない勢力分布が、観測者に常に新しい戦略を要求します。</p>
 
-            <div class="visual-box">[ 庭園内の動的な勢力分布と進化チャートの可視化 ]</div>
-
-            <h3>生存競争の核心：境界紛争システム</h3>
-            <p>
-                この庭園において、平穏は一時的な錯覚に過ぎません。定期的に発生する「境界紛争」こそが、種の淘汰と繁栄を決定づけます。
-                攻撃特化の「赤」が圧倒するか、演算能力に優れた「青」が効率的に広がるか。各勢力の個体は、あなたが授けた「研鑽」を武器に、自らの生存をかけて戦います。
-            </p>
-
-            <h3>戦略的介入の快感</h3>
-            <p>
-                プレイヤーができることは「クローン生成」と「ステータス強化」のみ。しかし、この最小限の介入こそが、生態系全体に巨大なバタフライ・エフェクト（蝶の羽ばたき効果）を巻き起こします。
-                圧倒的な劣勢から、一回のクローン生成をきっかけに庭園全域の色を塗り替えるカタルシスは、本作ならではの体験です。
-            </p>
-
-            <div class="visual-box">[ 進化階位の上昇に伴う、個体形態の劇的な変容プロセス ]</div>
-
-            <h3>完全無料・インストール不要の次世代体験</h3>
-            <p>
-                最新のPWA（プログレッシブ・ウェブアプリ）技術を駆使し、スマホでもPCでも最高速度で動作するように設計されています。
-                「空き時間に一瞬、現在の生態系を確認する」。そんな知的で贅沢な習慣が、あなたのデバイスから始まります。
-            </p>
+        <div class="chart-container">
+            <div class="mini-map">
+                <div class="m-z m-red"></div>
+                <div class="m-z m-blue"></div>
+                <div class="m-z m-green"></div>
+                <div class="m-z m-yellow"></div>
+            </div>
+            <div class="stats-labels">
+                <div class="label-row">
+                    <span>RED</span>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 65%; background: #ef4444;"></div></div>
+                </div>
+                <div class="label-row">
+                    <span>BLUE</span>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 40%; background: #3b82f6;"></div></div>
+                </div>
+                <div class="label-row">
+                    <span>GREEN</span>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 80%; background: #22c55e;"></div></div>
+                </div>
+                <div class="label-row">
+                    <span>YELLOW</span>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 25%; background: #eab308;"></div></div>
+                </div>
+            </div>
         </div>
+
+        <h3>生存競争の核心：境界紛争</h3>
+        <p>定期的に発生する紛争こそが淘汰の場です。攻撃特化か、機動力重視か。あなたが授けた研鑽が、種の生存を左右します。</p>
+
+        <div class="evolution-flow">
+            <div class="evo-step">
+                <div class="evo-circle">I</div>
+                <div class="step-name">原始形態</div>
+            </div>
+            <div class="evo-step">
+                <div class="evo-circle">V</div>
+                <div class="step-name">中位種</div>
+            </div>
+            <div class="evo-step">
+                <div class="evo-circle" style="background: var(--accent); color: #000;">X</div>
+                <div class="step-name" style="color: var(--accent);">第10階位</div>
+            </div>
+        </div>
+
+        <h3>完全無料・ブラウザの限界へ</h3>
+        <p>PWA技術により、スマホでもPCでも最高速度で動作。空き時間に一瞬、生態系を確認する。そんな贅沢な体験がここから始まります。</p>
     </section>
 
     <footer>
-        <div class="footer-cta">
-            <h2 style="font-family: 'Noto Serif JP', serif; font-size: 2.5rem; margin-bottom: 20px;">今、進化の目撃者となれ。</h2>
-            <p style="margin-bottom: 40px;">第10階位に到達した時、あなたはこの庭園の真の姿を知るでしょう。</p>
-            <a href="game.html" class="btn-play">無料でプレイ開始</a>
-        </div>
-        <p style="color: var(--text-sub); font-size: 0.8rem; margin-top: 60px; letter-spacing: 0.1em;">
-            &copy; 2026 Evolution Garden Project. / All Rights Reserved.<br>
-            <span style="opacity: 0.4;">v1.2.0 - Strategic Biological Simulator</span>
+        <h2 style="font-family: 'Noto Serif JP', serif;">今、進化の目撃者となれ。</h2>
+        <a href="game.html" class="btn-play">無料でプレイ開始</a>
+        <p style="color: var(--text-sub); font-size: 0.8rem; margin-top: 50px;">
+            &copy; 2026 Evolution Garden Project. / All Rights Reserved.
         </p>
     </footer>
 
