@@ -87,7 +87,7 @@ function executeWar() {
         if (getTerritorySize(tyrant) > 0.35) {
             playSE('win');
             logAll(`🤝 連合軍：強大化した【${GAME_STATE.BLOODLINES[tyrant].label}】の制圧作戦を完遂。`, 'union');
-            applyPivot(victims[0], 5); applyPivot(victims[1], 3); applyPivot(victims[2], 2);
+            applyPivot(victims[0], 10); applyPivot(victims[1], 6); applyPivot(victims[2], 4);
             loser = tyrant;
         } else {
             const aK = keys[Math.floor(Math.random()*4)];
